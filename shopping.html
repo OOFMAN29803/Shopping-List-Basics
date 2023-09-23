@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+body {
+overflow: hidden;
+}
+.input {
+width: 75%;
+height: 35px;
+border-radius: 30px;
+border: 2px solid #0b57d0;
+font-family: Sans-serif;
+padding: 5px;
+}
+.buttonadd {
+height: 40px;
+width: 70px;
+border-radius: 20px;
+background-color: #0b57d0;
+border: 0px solid;
+color: white;
+font-weight: bold;
+padding: 5px;
+font-family: Sans-Serif;
+margin-top: 40px;
+}
+.incorrect {
+width: 700px;
+height: 275px;
+border: 0px solid;
+border-radius: 20px;
+background-color: #DAE6FF;
+margin-top: 300px;
+display: none;
+}
+
+.incorrectp {
+margin-top: 40px;
+font-family: Sans-Serif;
+font-size: 30px;
+}
+
+.ok {
+width: 80px;
+height: 40px;
+margin-top: 70px;
+border: 0px solid;
+background-color: #0b57d0;
+border-radius: 20px;
+color: white;
+font-weight: bold;
+}
+
+.top {
+border: 0px solid;
+padding: 10px;
+background-color: #DAE6FF;
+border-radius: 20px;
+}
+</style>
+</head>
+<body>
+<div class="top"><center><input class="input" id="inputmessage"></input>
+<br>
+<button class="buttonadd" onclick="addshop()" id="button">Add</button></div>
+<div class="incorrect" id="incorrect"><p class="incorrectp">Hey, you cannot keep the input empty</p><button class="ok" onclick="inputok()">OK</button></div>
+</center>
+<script>
+
+
+function addshop() {
+  var inputmessage = document.getElementById("inputmessage");
+  var incorrectdiv = document.getElementById("incorrect");
+  var button = document.getElementById("button");
+
+  if (inputmessage.value.trim() === "") {
+    inputempty();
+    console.error("Input is Empty");
+  } else {
+    const message = document.createElement("p");
+    message.setAttribute("id", "item");
+    message.style.fontSize = "30px";
+    message.style.fontFamily = "Sans-Serif";
+    message.style.marginLeft = "20px";
+    message.style.wordWrap = "break-word";
+    message.style.display = "flex";
+    message.style.flexDirection = "column-reverse";
+
+    if (inputmessage.value.length > 50) {
+      message.textContent = inputmessage.value.substring(0, 50) + "...";
+    } else {
+      message.textContent = inputmessage.value;
+    }
+
+    document.body.appendChild(message);
+    inputmessage.value = "";
+}
+}
+
+
+function inputempty() {
+var incorrectdiv = document.getElementById("incorrect")
+var inputmessage = document.getElementById("inputmessage")
+var button = document.getElementById("button")
+incorrectdiv.style.display = "block"
+button.style.display = "none"
+inputmessage.style.display = "none"
+}
+
+function inputok() {
+var incorrectdiv = document.getElementById("incorrect")
+var inputmessage = document.getElementById("inputmessage")
+var button = document.getElementById("button")
+incorrectdiv.style.display = "none"
+button.style.display = "block"
+inputmessage.style.display = "block"
+}
+
+</script>
+</body>
+</html>
